@@ -152,6 +152,21 @@ void setup() {
     while (1);
   }
 
+  // Apply calibration data
+  adafruit_bno055_offsets_t calibrationData;
+  calibrationData.accel_offset_x = -24;
+  calibrationData.accel_offset_y = -61;
+  calibrationData.accel_offset_z = -36;
+  calibrationData.gyro_offset_x = -1;
+  calibrationData.gyro_offset_y = 0;
+  calibrationData.gyro_offset_z = 1;
+  calibrationData.mag_offset_x = -1;  
+  calibrationData.mag_offset_y = 0;  
+  calibrationData.mag_offset_z = -36;  
+  calibrationData.accel_radius = 1000;
+  calibrationData.mag_radius = 546;
+  bno.setSensorOffsets(calibrationData);
+
   delay(1000);
 
   state = WAITING_AGENT;
